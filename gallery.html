@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery: Explore USA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Brush+Script+MT&display=swap" rel="stylesheet">
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hdr {
+  position: relative;
+  display: flex;
+  height: 200px;
+  align-items: center;
+  width: 100%;
+  overflow: hidden; 
+}
+
+.image_Carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.image_Carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.column {
+  position: relative;
+  z-index: 2; 
+}
+
+.column.logo {
+  margin-left: 10px; 
+}
+
+.column.heading {
+  flex: 1;
+  text-align: right; 
+  margin-right: 10px; 
+}
+
+.column.heading h1 {
+  color: white;
+  font-family: "Brush Script MT", cursive;
+  font-weight: 700;
+  margin: 0;
+  font-size: 4em; 
+  padding: 5px;
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.column.heading h1:hover {
+  transform: translateY(5%) translateX(-5%) scale(1.1);
+}
+
+.image_Carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit:fill;
+  opacity: 0.8;
+  overflow: hidden;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #87CEEB;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow:hidden;
+}
+
+.navbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #00365a;
+  background-color: #87CEEB;
+  padding: 12px 25px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 1.1em;
+}
+
+.navbar a:hover {
+  background: #F4A460;
+  color: #085218;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.navbar a.active {
+  font-weight: bold;
+  background-color: #FF6F61;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar a.active:hover {
+  background: #d52e1b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-container {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    width: 50px;
+    height: 25px;
+    background-color: #bdc3c7;
+    border-radius: 25px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.toggle-label::after {
+    content: "";
+    width: 23px;
+    height: 23px;
+    background-color: #ecf0f1;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: #27ae60;
+}
+
+.toggle-input:checked + .toggle-label::after {
+    transform: translateX(25px);
+    background-color: #2ecc71;
+}
+
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.dark-mode .navbar {
+    background-color: #34495e;
+}
+
+body.dark-mode .nav-items a {
+    color: #fff;
+}
+
+body.dark-mode .nav-items a:hover {
+    color: #f39c12;
+}
+
+body.dark-mode .toggle-label {
+    background-color: #2c3e50;
+}
+
+body.dark-mode .toggle-label::after {
+    background-color: #ecf0f1;
+}
+
+/* Footer */
+footer {
+  background-color: #71aac0;
+  color: #340758;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.container2 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+.column_2 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-size: smaller;
+  flex-basis: 30%;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(114, 113, 113, 0.1);
+  overflow: hidden;
+}
+
+h2 {
+  color: #d3dbdb;
+  border-bottom: 2px solid #394f50;
+  padding-bottom: 10px;
+}
+
+p {
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* Social Links Styles */
+.social-text-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+  width: 100%;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.social-text-links h3 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.social-links-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  overflow: hidden;  
+}
+
+.social-text-links a {
+  background-color: #271414;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(61, 52, 52, 0.1);
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer-links {
+  margin: 0.5rem 0;
+  overflow: hidden;
+}
+
+.footer-links a {
+  color: #361a1a;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.copyright {
+  color: #292222;
+  font-size: 0.85rem;
+  overflow: hidden;
+}
+
+.social-text-links a:hover {
+  background-color: #444444;
+  transform: translateY(-2px);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .social-text-links {
+    flex-direction: row;
+    gap: 1rem;
+    overflow: hidden;
+  }
+  
+  .social-text-links h3 {
+    margin-right: 2rem;
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+}
+
+.elementspacing {
+  height: 15px;
+  overflow: hidden;
+}
+
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.city-card {
+    background: #e5d0e9;
+    color: #00365a;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.city-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.city-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    background: #b6837e;
+    color: #fff;
+}
+
+.city-card p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+    </style>
+</head>
+<body>
+    <header class="hdr">
+        <div class="image_Carousel">
+            <img id="imageElement" src="" alt="Image Carousel">
+        </div>
+        <div class="column logo">
+            <a href="index.html"><img src="travellogo.png" alt="Travel Vista Logo" height="80" width="120"></a>
+        </div>
+        <div class="column heading">
+            <h1>Travel Vista</h1>
+        </div>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <b><li style="border: 2px solid #00365a; border-radius: 10px;"><a href="explore.php">Explore USA</a></li></b>
+            <li><a class="active" href="gallery.html">Gallery</a></li>
+            <li></li>
+            <div class="toggle-container">
+                <input type="checkbox" id="toggle" class="toggle-input">
+                <label for="toggle" class="toggle-label"></label>
+            </div>
+        </ul>
+    </nav>
+    <br>
+    <section class="city-grid">
+        <div class="city-card">
+            <img src="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg?w=1200&h=630&q=95&fit=crop" alt="New York">
+            <p>New York</p>
+        </div>
+        <div class="city-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg" alt="Los Angeles">
+            <p>Los Angeles</p>
+        </div>
+        <div class="city-card">
+            <img src="https://as1.ftcdn.net/v2/jpg/00/35/35/40/1000_F_35354022_kVyRIi42r1EReIdrVQ7iXANMZ3zeDNio.jpg" alt="Chicago">
+            <p>Chicago</p>
+        </div>
+        <div class="city-card">
+            <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/houston/Houston_SKyline_e91e6bde-25f8-4525-93b6-0fe4c9f79307.jpg" alt="Houston">
+            <p>Houston</p>
+        </div>
+        <div class="city-card">
+            <img src="https://media.tacdn.com/media/attractions-content--1x-1/12/29/09/fe.jpg" alt="Phoenix">
+            <p>Phoenix</p>
+        </div>
+        <div class="city-card">
+            <img src="https://cdn.britannica.com/13/77413-050-95217C0B/Golden-Gate-Bridge-San-Francisco.jpg" alt="San Francisco">
+            <p>San Francisco</p>
+        </div>
+        <div class="city-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPLRUk7en3Q9uyfSJrhuNRpkME1bldhTNgmg&s" alt="Phoenix">
+            <p>Utah</p>
+        </div>
+        <div class="city-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR6EQMih2k-qkOm7dVbUHh21K29zhahUivO458KxxditnDN1nBvU8-Ii9rjiazZdtTibo&usqp=CAU" alt="San Francisco">
+            <p>Tennessee</p>
+        </div>
+    </section>    
+    <br>
+    <div class="footer-container">
+        <footer>
+            <div class="footer-content">
+                <div class="column_2">
+                    <h2>Why Travel Vista?</h2>
+                    <p>Established in 2024, Travel Vista is our Web Development Project. We offer competitive experience of trip planning, exclusive review and blogging community, and a seamless booking experience. From flights to hotels, we've got all your travel needs covered.</p>
+                </div>
+                <div class="column_2">
+                    <h2>Booking with Travel Vista</h2>
+                    <p>At Travel Vista, find the best deals on flights, hotels, and vacation packages. Our user-friendly platform allows you to book with ease. With 24/7 customer support, we ensure your travel plans are always in good hands.</p>
+                </div>
+                <div class="column_2">
+                    <h2>Explore the World</h2>
+                    <p>Whether it's domestic getaways or international adventures, Travel Vista has you covered. Enjoy instant confirmations, price comparisons, and exciting travel features to make your journey unforgettable.</p>
+                </div>
+            </div>
+            <div class="elementspacing"></div>
+            <div class="social-text-links">
+                <h3>CONNECT WITH US</h3>
+                <div class="social-links-container">
+                    <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                    <a href="https://www.twitter.com" target="_blank">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms of Service</a> |
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="copyright">
+                    Travel Vista © 2024. All Rights Reserved.<br>
+                    Created by Avni, Yash, Kohsheen & Rishab
+                </div>
+            </div>
+        </footer>
+        </div>    
+</body>
+<script>
+    const images = [
+    "https://t3.ftcdn.net/jpg/05/49/37/30/360_F_549373036_sjqy4Y3BUfFKAAELVfvOw0gIDAZ6QmH6.jpg",
+    "https://as2.ftcdn.net/v2/jpg/04/72/40/73/1000_F_472407355_YUmspuQxu0XBxMeoZjprvkuhR6VFZMhI.jpg"
+];
+
+let currentIndex = 0;
+
+function changeImage() {
+    const imageElement = document.getElementById("imageElement");
+    imageElement.classList.add("vortex-animation");
+
+    setTimeout(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        imageElement.src = images[currentIndex];
+        imageElement.classList.remove("vortex-animation");
+    }, 1000);
+}
+
+setInterval(changeImage, 5000);
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("imageElement").src = images[currentIndex];
+})
+
+toggle.addEventListener('change', () => {
+            if(toggle.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+</script>
+</html>

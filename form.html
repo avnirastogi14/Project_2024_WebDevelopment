@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In/Sign Up Form</title>
+    <link rel="stylesheet" href="formstyle.css">
+</head>
+<body>
+    <div id="animation">
+        <img src="airplane.png" alt="Airplane">
+    </div>
+    
+    <!-- back to home: clickable image div -->
+    <div id="backtab" class="backtab" style="display: none;">
+        <a href="index.html">
+            <img src="  https://i.pinimg.com/736x/75/cb/29/75cb29e50b9e2487cf262379434193df.jpg" alt="Back to Homepage" width="60px" height="60px">
+        </a>
+    </div>
+    
+    <div class="container" id="container">
+        <!-- Existing sign-up and sign-in form sections -->
+        <div class="form-container sign-up-container">
+            <form action="register.php" method="POST">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="https://www.facebook.com/login.php" class="social">
+                        <img src="https://i.pinimg.com/736x/3a/eb/b4/3aebb48256be53081edf362e32acb5a6.jpg" alt="Facebook Logo" width="50px" height="50px">
+                    </a>
+                    <a href="https://accounts.google.com/v3/signin/identifier" class="social">
+                        <img src="https://imgs.search.brave.com/V7sgagRATLlWoAL9kKkWlvM1Lymxxb-2sk6dz3LnYrk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9j/L2MxL0dvb2dsZV8l/MjJHJTIyX2xvZ28u/c3Zn" alt="Google Logo" width="70px" height="60px">
+                    </a>                    
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" name="name" placeholder="Name" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <br>
+                <button type="submit">SIGN UP</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="signin.php" method="POST"> <!-- Updated action to signin.php -->
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="https://www.facebook.com/login.php" class="social">
+                        <img src="https://i.pinimg.com/736x/3a/eb/b4/3aebb48256be53081edf362e32acb5a6.jpg" alt="Facebook Logo" width="50px" height="50px">
+                    </a>
+                    <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount" class="social">
+                        <img src="https://imgs.search.brave.com/V7sgagRATLlWoAL9kKkWlvM1Lymxxb-2sk6dz3LnYrk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9j/L2MxL0dvb2dsZV8l/MjJHJTIyX2xvZ28u/c3Zn" alt="Google Logo" width="70px" height="60px">
+                    </a>      
+                </div>
+                <span>or use your account</span>
+                <input type="email" name="email" placeholder="Email" required /> <!-- Added name attribute -->
+                <input type="password" name="password" placeholder="Password" required /> <!-- Added name attribute -->
+                <br>
+                <button type="submit">SIGN IN</button> <!-- Added type="submit" -->
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <p>To keep connected, please sign in with your personal info</p>
+                    <br>
+                    <button class="ghost" id="signIn">SIGN IN</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Traveller!</h1>
+                    <br>
+                    <p>Enter your personal details and start your journey with us</p>
+                    <br>
+                    <button class="ghost" id="signUp">SIGN UP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="formscript.js"></script>
+</body>
+</html>
